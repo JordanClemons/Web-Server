@@ -1,0 +1,45 @@
+The code is broken up into different functions:
+
+parseWebFrame: This function parses the web socket frame
+and sends the frame to the client after parsing as well as 
+adds the message to the database
+
+xor: This function takes two binary string inputs and returns
+the xor value
+
+webSocketHashing: This function does the appropriate various hashings
+the websocket requires for a handshake
+
+handleWebSocket: This function sends the web socket response to confirm
+a handshake with a status of 101. Following this, it pulls the database
+to load the previous messages
+
+customTemplate: This function takes in images and names
+and when given these, opens the custom HTML template
+and replaces the {{}} tags within the html file with the parameters given.
+Then it sends this newly created HTML with the proper content length/
+MIME type. 
+
+querySearch: This function takes in the query URL and parses it into
+2 arrays; name and images. It then sends these arrays to the customTemplate
+function described above.
+
+handleRequest: This function handles all the get requests. For 
+spefific paths like "/", "style.css", "/functions.js", "/utf.txt",
+"/image/{imageName.jpg}", it opens the file, finds the content length
+and sends the appropriate MIME type. For customised query paths, it is sent to the other
+functions described above.
+
+handlePostRequest: This function does all the parsing of the post request. It also handles recieving
+the data according to the content length. After parsing, it sends the request to the appropriate
+function.
+
+addImage: This function adds the image and caption to the array of allowable images.
+This is for security purposes.
+
+addForm: This function adds the name and caption to the array of allowable images.
+This is for security purposes.
+
+removeHTML: This function handles removing html for security so the user can't add
+their own html.
+

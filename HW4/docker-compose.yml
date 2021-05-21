@@ -1,0 +1,13 @@
+version: '3'
+
+services: 
+  app:
+    build: .
+    ports:
+      - 8080:8000
+    links:
+      - db
+  db:
+    image: mongo:latest
+    ports:
+      - 27017:27017
